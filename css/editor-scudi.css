@@ -1,0 +1,50 @@
+.down-row {
+  margin-top: 1em;
+}
+
+#frame-color-000000, #text-color-000000 {
+  background-color: #000000;
+}
+
+#frame-color-c0c000, #text-color-c0c000 {
+  background-color: #c0c000;
+}
+
+#frame-color-0000ff, #text-color-0000ff {
+  background-color: #0000ff;
+}
+
+#frame-color-f89600, #text-color-f89600 {
+  background-color: #f89600;
+}
+
+#frame-color-ff0000, #text-color-ff0000 {
+  background-color: #ff0000;
+}
+
+#frame-color-ff00ff, #text-color-ff00ff {
+  background-color: #ff00ff;
+}
+
+#frame-color-ffff00, #text-color-ffff00 {
+  background-color: #ffff00;
+}
+
+#text-color-ffffff {
+  background-color: #ffffff;
+  border: 1px solid gray;
+}
+
+.pick-color-picker {
+  height: 2.5em;
+  margin-right: 1em;
+  width: 2.5em;
+}
+
+.pick-color-picker:hover {
+  opacity: 0.5;
+}
+
+.up-row {
+  margin-bottom: 1em;
+}

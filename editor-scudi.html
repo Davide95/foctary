@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="it">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>
+    Editor scudi - Octagone
+  </title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+  <!-- JQuery -->
+  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
+  <!-- Easel JS -->
+  <script src="//code.createjs.com/easeljs-0.8.2.min.js"></script>
+
+  <!-- Mousehold plugin -->
+  <script src="js/mousehold.js?v=1"></script>
+
+  <!-- Custom JS -->
+  <script src="js/editor-scudi.js?v=1"></script>
+
+  <!-- Custon CSS -->
+  <link rel="stylesheet" href="css/main.css?v=1">
+  <link rel="stylesheet" href="css/editor-scudi.css?v=1">
+
+  <!-- Menu -->
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+      <header class="navbar-header">
+        <a class="navbar-brand" href="index.html" tabindex="1">
+          Editor Octagone
+        </a>
+      </header>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active">
+          <a href="editor-scudi.html" tabindex="2">
+            Editor scudi
+          </a>
+        <li>
+          <a href="editor-piano-di-gioco.html" tabindex="3">
+            Editor piano di gioco
+          </a>
+        <li>
+          <a href="stampa.html" tabindex="4">
+            Stampa
+          </a>
+      </ul>
+    </div>
+  </nav>
+
+  <noscript>
+    <div class="container">
+      <div class="alert alert-warning">
+        <span class="glyphicon glyphicon-alert"></span>
+        <strong>Attenzione!</strong>
+        <p>
+          Per avere a disposizione tutte le funzionalità di questo sito è necessario abilitare
+          Javascript. Qui ci sono tutte le <a href="http://www.enable-javascript.com/it/"
+          target="_blank"> istruzioni su come abilitare JavaScript nel tuo browser</a>.
+        </p>
+      </div>
+    </div>
+  </noscript>
+
+  <main class="container">
+    <section class="text-center">
+      <!-- Canvas che conterrà la pedina -->
+        <canvas id="shield" width="250" height="250"></canvas>
+    </section>
+
+    <!-- Editor cornice -->
+    <section id="frame-panel" class="panel panel-default">
+      <header class="panel-heading">
+        Cornice
+      </header>
+      <div class="panel-body">
+        <label>
+            Colore:
+        </label>
+        <p>
+          <canvas class="pick-color-picker frame-color" id="frame-color-0000ff" tabindex="10"></canvas>
+          <canvas class="pick-color-picker frame-color" id="frame-color-f89600" tabindex="11"></canvas>
+          <canvas class="pick-color-picker frame-color" id="frame-color-ffff00" tabindex="12"></canvas>
+          <canvas class="pick-color-picker frame-color" id="frame-color-ff00ff" tabindex="13"></canvas>
+          <canvas class="pick-color-picker frame-color" id="frame-color-ff0000" tabindex="14"></canvas>
+          <canvas class="pick-color-picker frame-color" id="frame-color-c0c000" tabindex="15"></canvas>
+          <canvas class="pick-color-picker frame-color" id="frame-color-000000" tabindex="16"></canvas>
+        </p>
+      </div>
+      <footer class="panel-footer text-right">
+        <button id="frame-next-button" class="btn btn-primary" title="Avanti" tabindex="17">
+          <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+      </footer>
+    </section>
+
+    <!-- Editor freccia -->
+    <section id="arrow-panel" class="panel panel-default">
+      <header class="panel-heading">
+        Freccia
+      </header>
+      <div class="panel-body">
+          <label>
+            Freccia:
+          </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="arrow-img" value="1.png" tabindex="20" checked>
+              <img src="/img/arrows/1.png" alt="Freccia gialla">
+            </label>
+          </div>
+      </div>
+      <footer class="panel-footer">
+        <button id="arrow-back-button" class="btn btn-primary" title="Indietro" tabindex="38">
+          <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+        <button id="arrow-next-button" class="btn btn-primary pull-right" title="Avanti" tabindex="39">
+          <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+      </footer>
+    </section>
+
+    <!-- Immagine di sfondo -->
+    <section id="background-panel" class="panel panel-default">
+      <header class="panel-heading">
+        Immagine di sfondo
+      </header>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="background-upload">
+            Upload:
+          </label>
+          <input class="form-control" type="file" id="background-upload" accept="image/*" tabindex="40">
+        </div>
+        <div class="form-group">
+          <label>
+            Muovi:
+          </label>
+          <div class="row text-center up-row">
+            <div class="col-sm-1 col-xs-2"></div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="background-up" class="btn btn-primary" title="Muovi immagine di sfondo in alto" tabindex="41">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+              </button>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-sm-1 col-xs-2">
+              <button id="background-left" class="btn btn-primary" title="Muovi immagine di sfondo a sinistra" tabindex="42">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+              </button>
+            </div>
+            <div class="col-sm-1 col-xs-2">
+              <button  id="background-pos-reset" class="btn btn-primary"  title="Reset posizione dell'immagine di sfondo" tabindex="43">
+                <span class="glyphicon glyphicon-screenshot"></span>
+              </button>
+            </div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="background-right" class="btn btn-primary"  title="Muovi immagine di sfondo a destra" tabindex="44">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+              </button>
+            </div>
+          </div>
+          <div class="row text-center down-row">
+            <div class="col-sm-1 col-xs-2"></div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="background-down" class="btn btn-primary"  title="Muovi immagine di sfondo in basso" tabindex="45">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>
+            Zoom:
+          </label>
+          <p>
+            <button id="background-more-zoom" class="btn btn-primary" title="Aumenta zoom immagine di sfondo" tabindex="46">
+              <span class="glyphicon glyphicon-zoom-in"></span>
+            </button>
+            <button id="background-less-zoom" class="btn btn-primary" title="Diminuisci zoom immagine di sfondo" tabindex="47">
+              <span class="glyphicon glyphicon-zoom-out"></span>
+            </button>
+          </p>
+        </div>
+      </div>
+      <footer class="panel-footer">
+        <button id="background-back-button" class="btn btn-primary" title="Indietro" tabindex="48">
+          <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+        <button id="background-next-button" class="btn btn-primary pull-right" title="Avanti" tabindex="49">
+          <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+      </footer>
+    </section>
+
+    <!-- Editor testo -->
+    <section id="text-panel" class="panel panel-default">
+      <header class="panel-heading">
+        Testo
+      </header>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="text-content">Testo:</label>
+          <input id="text-content" type="text" class="form-control" placeholder="Inserisci il testo che vuoi che compaia sul tuo scudo qui" tabindex="50">
+        </div>
+        <div class="form-group">
+          <label>
+            Colore:
+          </label>
+          <p>
+            <canvas class="pick-color-picker text-color" id="text-color-0000ff" tabindex="51"></canvas>
+            <canvas class="pick-color-picker text-color" id="text-color-f89600" tabindex="52"></canvas>
+            <canvas class="pick-color-picker text-color" id="text-color-ffff00" tabindex="53"></canvas>
+            <canvas class="pick-color-picker text-color" id="text-color-ff00ff" tabindex="54"></canvas>
+            <canvas class="pick-color-picker text-color" id="text-color-ff0000" tabindex="55"></canvas>
+            <canvas class="pick-color-picker text-color" id="text-color-c0c000" tabindex="56"></canvas>
+            <canvas class="pick-color-picker text-color" id="text-color-000000" tabindex="57"></canvas>
+            <canvas class="pick-color-picker text-color" id="text-color-ffffff" tabindex="58"></canvas>
+          </p>
+        </div>
+        <div class="form-group">
+          <label>
+            Muovi:
+          </label>
+          <div class="row text-center up-row">
+            <div class="col-sm-1 col-xs-2"></div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="text-up" class="btn btn-primary" title="Muovi testo in alto" tabindex="59">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+              </button>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-sm-1 col-xs-2">
+              <button id="text-left" class="btn btn-primary" title="Muovi testo a sinistra" tabindex="60">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+              </button>
+            </div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="text-pos-reset" class="btn btn-primary" title="Reset posizione del testo" tabindex="61">
+                <span class="glyphicon glyphicon-screenshot"></span>
+              </button>
+            </div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="text-right" class="btn btn-primary" title="Muovi testo a destra" tabindex="62">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+              </button>
+            </div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="text-align-center" class="btn btn-primary" title="Centra il testo orizzontalmente" tabindex="63">
+                <span class="glyphicon glyphicon-align-center"></span>
+              </button>
+            </div>
+          </div>
+          <div class="row text-center down-row">
+            <div class="col-sm-1 col-xs-2"></div>
+            <div class="col-sm-1 col-xs-2">
+              <button id="text-down" class="btn btn-primary" title="Muovi testo in basso" tabindex="64">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>
+            Zoom:
+          </label>
+          <p>
+            <button id="text-more-zoom" class="btn btn-primary" title="Aumenta zoom testo" tabindex="65">
+              <span class="glyphicon glyphicon-zoom-in"></span>
+            </button>
+            <button id="text-less-zoom" class="btn btn-primary" title="Diminuisci zoom testo" tabindex="66">
+              <span class="glyphicon glyphicon-zoom-out"></span>
+            </button>
+          </p>
+        </div>
+      </div>
+      <footer class="panel-footer">
+        <button id="text-back-button" class="btn btn-primary" title="Indietro" tabindex="67">
+          <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+        <div class="pull-right">
+          <a href="index.html" class="btn btn-default" title="Torna alla home" tabindex="68">
+            <span class="glyphicon glyphicon-home"></span>
+          </a>
+          <a class="btn btn-primary" id="download" title="Download" download="pedina.png" tabindex="69">
+            <span class="glyphicon glyphicon-download"></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+  </main>
