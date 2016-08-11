@@ -9,6 +9,7 @@ var DEFAULT_TEXT_SIZE = 30;                           // Grandezza in px inizial
 var DEFAULT_TEXT_COLOR = 'black';                     // Colore iniziale del testo
 var DEFAULT_TEXT_POS_FROM_BOTTOM = 100;               // Px di distanza del testo dal fondo
 var TEXT_MOVE_SIZE = BACKGROUND_MOVE_SIZE;            // Px di spostamento dell'immagine di sfondo ad ogni click
+var BORDER_FRAME = 2;                                 // Px del bordo nero della cornice
 
 // Elementi dello scudo
 var bigFrame = new createjs.Shape();
@@ -28,14 +29,23 @@ text.y = PIECE_SIZE - DEFAULT_TEXT_POS_FROM_BOTTOM;
 $(function() {
   // Inizializza createjs e gli elementi dello scudo
   var stage = new createjs.Stage('shield');
+
+  // Disegno i bordi della cornice
+  var borderFrame = new createjs.Shape();
+  var smallBorderFrame = new createjs.Shape();
+
+  stage.addChild(borderFrame);
   stage.addChild(bigFrame);
+  stage.addChild(smallBorderFrame);
   stage.addChild(smallFrameFiller);
   stage.addChild(background.shape);
   stage.addChild(arrow);
   stage.addChild(text);
 
   // Disegna uno scudo demo
-  bigFrame.graphics.beginFill('#0000ff').drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2, 8, 0, 0);
+  borderFrame.graphics.beginFill('black').drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2, 8, 0, 0);
+  bigFrame.graphics.beginFill('#0000ff').drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2 - BORDER_FRAME, 8, 0, 0);
+  smallBorderFrame.graphics.beginFill('black').drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2 - FRAME_BORDER_SIZE + BORDER_FRAME, 8, 0, 0);
   smallFrameFiller.graphics.beginFill('white').drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2 - FRAME_BORDER_SIZE, 8, 0, 0);
   stage.update();
 
@@ -94,7 +104,7 @@ $(function() {
   // Cambio colore cornice
   $('.frame-color').click(function() {
     bigFrame.graphics.clear();
-    bigFrame.graphics.beginFill($(this).css('background-color')).drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2, 8, 0, 0);
+    bigFrame.graphics.beginFill($(this).css('background-color')).drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2 - BORDER_FRAME, 8, 0, 0);
     smallFrameFiller.graphics.clear();
     smallFrameFiller.graphics.beginFill('white').drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2 - FRAME_BORDER_SIZE, 8, 0, 0);
     stage.update();
