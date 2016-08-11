@@ -8,13 +8,13 @@
     Editor scudi - Octagone
   </title>
 
+  <!-- JQuery -->
+  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-
-  <!-- JQuery -->
-  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
-  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <!-- Easel JS -->
   <script src="//code.createjs.com/easeljs-0.8.2.min.js"></script>
@@ -36,22 +36,31 @@
         <a class="navbar-brand" href="index.html" tabindex="1">
           Editor Octagone
         </a>
+
+        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hamburger-menu" tabindex="3">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </header>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active">
-          <a href="editor-scudi.html" tabindex="2">
-            Editor scudi
-          </a>
-        <li>
-          <a href="editor-piano-di-gioco.html" tabindex="3">
-            Editor piano di gioco
-          </a>
-        <li>
-          <a href="stampa.html" tabindex="4">
-            Stampa
-          </a>
-      </ul>
+      <div class="collapse navbar-collapse" id="hamburger-menu">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="editor-scudi.html" tabindex="3">
+              Editor scudi
+            </a>
+          <li>
+            <a href="editor-piano-di-gioco.html" tabindex="4">
+              Editor piano di gioco
+            </a>
+          <li>
+            <a href="stampa.html" tabindex="5">
+              Stampa
+            </a>
+        </ul>
+      </div>
     </div>
   </nav>
 
