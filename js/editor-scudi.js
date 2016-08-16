@@ -200,6 +200,10 @@ $(function() {
   $('#background-more-zoom').click(function() {
     $('#background-less-zoom').removeClass('disabled');
     background.zoom += ZOOM_MOVE_SIZE;
+
+   background.x -= background.lastImg.width * ZOOM_MOVE_SIZE / 2;
+   background.y -= background.lastImg.height * ZOOM_MOVE_SIZE / 2;
+
     updateBackgroundImg();
   });
 
@@ -212,6 +216,10 @@ $(function() {
       $(this).addClass('disabled');
 
     background.zoom -= ZOOM_MOVE_SIZE;
+
+    background.x += background.lastImg.width * ZOOM_MOVE_SIZE / 2;
+    background.y += background.lastImg.height * ZOOM_MOVE_SIZE / 2;
+
     updateBackgroundImg();
   });
 
