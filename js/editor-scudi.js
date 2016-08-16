@@ -156,40 +156,24 @@ $(function() {
   });
 
   // Muovo l'immagine di sfondo
-  $('#background-up').click(function() {
+  $('#background-up').mousehold(function() {
     background.y -= BACKGROUND_MOVE_SIZE;
     updateBackgroundImg();
   });
 
-  $('#background-up').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#background-down').click(function() {
+  $('#background-down').mousehold(function() {
     background.y += BACKGROUND_MOVE_SIZE;
     updateBackgroundImg();
   });
 
-  $('#background-down').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#background-left').click(function() {
+  $('#background-left').mousehold(function() {
     background.x -= BACKGROUND_MOVE_SIZE;
     updateBackgroundImg();
   });
 
-  $('#background-left').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#background-right').click(function() {
+  $('#background-right').mousehold(function() {
     background.x += BACKGROUND_MOVE_SIZE;
     updateBackgroundImg();
-  });
-
-  $('#background-right').mousehold(function() {
-    $(this).click();
   });
 
   $('#background-pos-reset').click(function() {
@@ -197,21 +181,17 @@ $(function() {
     updateBackgroundImg();
   });
 
-  $('#background-more-zoom').click(function() {
+  $('#background-more-zoom').mousehold(function() {
     $('#background-less-zoom').removeClass('disabled');
     background.zoom += ZOOM_MOVE_SIZE;
 
-   background.x -= background.lastImg.width * ZOOM_MOVE_SIZE / 2;
-   background.y -= background.lastImg.height * ZOOM_MOVE_SIZE / 2;
+    background.x -= background.lastImg.width * ZOOM_MOVE_SIZE / 2;
+    background.y -= background.lastImg.height * ZOOM_MOVE_SIZE / 2;
 
     updateBackgroundImg();
   });
 
-  $('#background-more-zoom').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#background-less-zoom').click(function() {
+  $('#background-less-zoom').mousehold(function() {
     if(background.zoom <= ZOOM_MOVE_SIZE)
       $(this).addClass('disabled');
 
@@ -221,10 +201,6 @@ $(function() {
     background.y += background.lastImg.height * ZOOM_MOVE_SIZE / 2;
 
     updateBackgroundImg();
-  });
-
-  $('#background-less-zoom').mousehold(function() {
-    $(this).click();
   });
 
   // Cambio il testo
@@ -240,40 +216,24 @@ $(function() {
   });
 
   // Muovo il testo
-  $('#text-up').click(function() {
+  $('#text-up').mousehold(function() {
     text.y -= TEXT_MOVE_SIZE;
     stage.update();
   });
 
-  $('#text-up').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#text-down').click(function() {
+  $('#text-down').mousehold(function() {
     text.y += TEXT_MOVE_SIZE;
     stage.update();
   });
 
-  $('#text-down').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#text-left').click(function() {
+  $('#text-left').mousehold(function() {
     text.x -= TEXT_MOVE_SIZE;
     stage.update();
   });
 
-  $('#text-left').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#text-right').click(function() {
+  $('#text-right').mousehold(function() {
     text.x += TEXT_MOVE_SIZE;
     stage.update();
-  });
-
-  $('#text-right').mousehold(function() {
-    $(this).click();
   });
 
   $('#text-pos-reset').click(function() {
@@ -282,28 +242,20 @@ $(function() {
     stage.update();
   });
 
-  $('#text-more-zoom').click(function() {
+  $('#text-more-zoom').mousehold(function() {
     $('#text-less-zoom').removeClass('disabled');
     text.scaleX += ZOOM_MOVE_SIZE;
     text.scaleY += ZOOM_MOVE_SIZE;
     stage.update();
   });
 
-  $('#text-more-zoom').mousehold(function() {
-    $(this).click();
-  });
-
-  $('#text-less-zoom').click(function() {
+  $('#text-less-zoom').mousehold(function() {
     if(text.scaleX <= ZOOM_MOVE_SIZE)
       $(this).addClass('disabled');
 
     text.scaleX -= ZOOM_MOVE_SIZE;
     text.scaleY -= ZOOM_MOVE_SIZE;
     stage.update();
-  });
-
-  $('#text-less-zoom').mousehold(function() {
-    $(this).click();
   });
 
   $('#text-align-center').click(function() {
