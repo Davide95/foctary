@@ -139,6 +139,7 @@ $(function() {
       fileReader.onload = function() {
         background.lastImg.src = fileReader.result;
         background.lastImg.onload = function() {
+          background.zoom
           resetBackgroundPos();
           updateBackgroundImg();
           $(":input").prop("disabled", false);
@@ -305,6 +306,9 @@ $(function() {
 
   // Resetta i valori della posizione del background centrandolo
   function resetBackgroundPos() {
+    background.zoom = 1;
+    $('#background-less-zoom').removeClass('disabled');
+    
     background.x = (PIECE_SIZE - background.lastImg.width)/2;
     background.y = (PIECE_SIZE - background.lastImg.height)/2;
   }
