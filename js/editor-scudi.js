@@ -309,10 +309,9 @@ $(function() {
     $('#background-less-zoom').removeClass('disabled');
 
     // Ridimensiono l'immagine
-    var scaleRatio;
     if(background.lastImg.width > background.lastImg.height) {
       var newWidth = background.lastImg.width % PIECE_SIZE;
-      scaleRatio = newWidth / background.lastImg.width;
+      var scaleRatio = newWidth / background.lastImg.width;
       background.lastImg.width = newWidth;
       background.lastImg.height = scaleRatio * background.lastImg.height;
     } else {
