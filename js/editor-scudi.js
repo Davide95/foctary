@@ -308,6 +308,20 @@ $(function() {
     background.zoom = 1;
     $('#background-less-zoom').removeClass('disabled');
 
+    // Ridimensiono l'immagine
+    var scaleRatio;
+    if(background.lastImg.width > background.lastImg.height) {
+      var newWidth = background.lastImg.width % PIECE_SIZE;
+      scaleRatio = newWidth / background.lastImg.width;
+      background.lastImg.width = newWidth;
+      background.lastImg.height = scaleRatio * background.lastImg.height;
+    } else {
+      var newHeight = background.lastImg.heigth % PIECE_SIZE;
+      var scaleRatio = newHeight / background.lastImg.heigth;
+      background.lastImg.height = newWidth;
+      background.lastImg.width = scaleRatio * background.lastImg.width;
+    }
+
     background.x = (PIECE_SIZE - background.lastImg.width)/2;
     background.y = (PIECE_SIZE - background.lastImg.height)/2;
   }
