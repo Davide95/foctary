@@ -49,22 +49,6 @@ $(function() {
   smallFrameFiller.graphics.beginFill('white').drawPolyStar(PIECE_SIZE/2, PIECE_SIZE/2, PIECE_SIZE/2 - FRAME_BORDER_SIZE, 8, 0, 0);
   stage.update();
 
-  // Carico la freccia di default
-  var defaultArrow = new Image();
-  defaultArrow.src = DEFAULT_ARROW_SRC;
-  $(":input").prop("disabled", true);
-  defaultArrow.onload = function() {
-    arrow.image = defaultArrow;
-    arrow.x = PIECE_SIZE/2 - arrow.image.width/2;
-    arrow.y = PIECE_SIZE - arrow.image.height;
-    stage.update();
-    $(":input").prop("disabled", false);
-  };
-  defaultArrow.onerror = function () {
-    $(":input").prop("disabled", false);
-    console.log('WARNING: freccia di default non caricata correttamente');
-  };
-
   // Nascondo tutti i pannelli tranne il primo
   $('#text-panel').hide();
   $('#background-panel').hide();
