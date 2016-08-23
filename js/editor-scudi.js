@@ -1,35 +1,36 @@
-// Costanti
-var FRAME_BORDER_SIZE = 10;                           // Spessore della cornice
-var PIECE_SIZE = 250;                                 // Larghezza e altezza dello scudo
-var DEFAULT_ARROW_DIR = 'img/arrows/';                // Cartella di default delle frecce
-var DEFAULT_ARROW_SRC = DEFAULT_ARROW_DIR + '1.png';  // URL freccia di default
-var BACKGROUND_MOVE_SIZE = 5;                         // Px di spostamento dell'immagine di sfondo ad ogni click
-var ZOOM_MOVE_SIZE = 0.05;                            // Percentuale di zoom dell'immagine di sfondo ad ogni click
-var DEFAULT_TEXT_SIZE = 30;                           // Grandezza in px iniziale del testo
-var DEFAULT_TEXT_COLOR = 'black';                     // Colore iniziale del testo
-var DEFAULT_TEXT_POS_FROM_BOTTOM = 100;               // Px di distanza del testo dal fondo
-var TEXT_MOVE_SIZE = BACKGROUND_MOVE_SIZE;            // Px di spostamento dell'immagine di sfondo ad ogni click
-var BORDER_FRAME = 2;                                 // Px del bordo nero della cornice
-
-// Elementi dello scudo
-var bigFrame = new createjs.Shape();
-var smallFrameFiller = new createjs.Shape();
-var arrow = new createjs.Bitmap();
-var background = {
-  'shape': new createjs.Shape(),
-  lastImg: new Image(),
-  x: 0,
-  y: 0,
-  zoom: 1
-};
-
-var text = new createjs.Text('', DEFAULT_TEXT_SIZE + 'px Arial', DEFAULT_TEXT_COLOR);
-text.textAlign = 'center';
-centerTextXPos();
-text.y = PIECE_SIZE - DEFAULT_TEXT_POS_FROM_BOTTOM;
-
 $(function() {
-  // Inizializza createjs e gli elementi dello scudo
+  // Costanti
+  var FRAME_BORDER_SIZE = 10;                           // Spessore della cornice
+  var PIECE_SIZE = 250;                                 // Larghezza e altezza dello scudo
+  var DEFAULT_ARROW_DIR = 'img/arrows/';                // Cartella di default delle frecce
+  var DEFAULT_ARROW_SRC = DEFAULT_ARROW_DIR + '1.png';  // URL freccia di default
+  var BACKGROUND_MOVE_SIZE = 5;                         // Px di spostamento dell'immagine di sfondo ad ogni click
+  var ZOOM_MOVE_SIZE = 0.05;                            // Percentuale di zoom dell'immagine di sfondo ad ogni click
+  var DEFAULT_TEXT_SIZE = 30;                           // Grandezza in px iniziale del testo
+  var DEFAULT_TEXT_COLOR = 'black';                     // Colore iniziale del testo
+  var DEFAULT_TEXT_POS_FROM_BOTTOM = 100;               // Px di distanza del testo dal fondo
+  var TEXT_MOVE_SIZE = BACKGROUND_MOVE_SIZE;            // Px di spostamento dell'immagine di sfondo ad ogni click
+  var BORDER_FRAME = 2;                                 // Px del bordo nero della cornice
+
+  // Elementi dello scudo
+  var bigFrame = new createjs.Shape();
+  var smallFrameFiller = new createjs.Shape();
+  var arrow = new createjs.Bitmap();
+  var background = {
+    'shape': new createjs.Shape(),
+    lastImg: new Image(),
+    x: 0,
+    y: 0,
+    zoom: 1
+  };
+
+  // Testo dello scudo
+  var text = new createjs.Text('', DEFAULT_TEXT_SIZE + 'px Arial', DEFAULT_TEXT_COLOR);
+  text.textAlign = 'center';
+  centerTextXPos();
+  text.y = PIECE_SIZE - DEFAULT_TEXT_POS_FROM_BOTTOM;
+
+  // Inizializza createjs
   var stage = new createjs.Stage('shield');
 
   // Disegno i bordi della cornice
@@ -310,9 +311,9 @@ $(function() {
     background.x = (PIECE_SIZE - background.lastImg.width)/2;
     background.y = (PIECE_SIZE - background.lastImg.height)/2;
   }
-});
 
-// Centra il testo dello scudo in orizzontale
-function centerTextXPos() {
-  text.x = PIECE_SIZE / 2;
-}
+  // Centra il testo dello scudo in orizzontale
+  function centerTextXPos() {
+    text.x = PIECE_SIZE / 2;
+  }
+});
