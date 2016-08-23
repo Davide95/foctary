@@ -24,6 +24,8 @@ var background = {
 };
 
 var text = new createjs.Text('', DEFAULT_TEXT_SIZE + 'px Arial', DEFAULT_TEXT_COLOR);
+text.textAlign = 'center';
+centerTextXPos();
 text.y = PIECE_SIZE - DEFAULT_TEXT_POS_FROM_BOTTOM;
 
 $(function() {
@@ -221,7 +223,7 @@ $(function() {
   });
 
   $('#text-pos-reset').click(function() {
-    text.x = 0;
+    centerTextXPos();
     text.y = PIECE_SIZE - DEFAULT_TEXT_POS_FROM_BOTTOM;
     stage.update();
   });
@@ -243,7 +245,7 @@ $(function() {
   });
 
   $('#text-align-center').click(function() {
-    text.x = (PIECE_SIZE - text.getMeasuredWidth() * text.scaleX) / 2;
+    centerTextXPos();
     stage.update();
   });
 
@@ -309,3 +311,8 @@ $(function() {
     background.y = (PIECE_SIZE - background.lastImg.height)/2;
   }
 });
+
+// Centra il testo dello scudo in orizzontale
+function centerTextXPos() {
+  text.x = PIECE_SIZE / 2;
+}
