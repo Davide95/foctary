@@ -297,14 +297,12 @@ $(function() {
 
     // Ridimensiono l'immagine
     if(background.lastImg.width > background.lastImg.height) {
-      var newWidth = background.lastImg.width % PIECE_SIZE;
-      var scaleRatio = newWidth / background.lastImg.width;
-      background.lastImg.width = newWidth;
+      var scaleRatio = PIECE_SIZE / background.lastImg.width;
+      background.lastImg.width = PIECE_SIZE;
       background.lastImg.height = scaleRatio * background.lastImg.height;
     } else {
-      var newHeight = background.lastImg.heigth % PIECE_SIZE;
-      var scaleRatio = newHeight / background.lastImg.heigth;
-      background.lastImg.height = newWidth;
+      var scaleRatio = PIECE_SIZE / background.lastImg.heigth;
+      background.lastImg.height = PIECE_SIZE;
       background.lastImg.width = scaleRatio * background.lastImg.width;
     }
 
