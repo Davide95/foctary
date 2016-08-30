@@ -18,10 +18,10 @@ $(function() {
   var arrow = new createjs.Bitmap();
   var background = {
     'shape': new createjs.Shape(),
-    lastImg: new Image(),
-    x: 0,
-    y: 0,
-    zoom: 1
+    'lastImg': new Image(),
+    'x': 0,
+    'y': 0,
+    'zoom': 1
   };
 
   // Testo dello scudo
