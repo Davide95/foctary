@@ -97,6 +97,11 @@ $(function() {
     stage.update();
   });
 
+  $('.frame-color').keypress(function(event) {
+    if(event.which == 13)
+      $(this).click();
+  });
+
   // Cambio immagine freccia
   $('input[name="arrow-img"]').click(function () {
     var newArrow = new Image();
@@ -200,6 +205,11 @@ $(function() {
   $('.text-color').click(function() {
     text.color = $(this).css('background-color');
     stage.update();
+  });
+
+  $('.text-color').keypress(function(event) {
+    if(event.which == 13)
+      $(this).click();
   });
 
   // Muovo il testo
