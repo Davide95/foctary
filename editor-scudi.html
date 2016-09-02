@@ -29,6 +29,18 @@
   <link rel="stylesheet" href="css/main.css?v=1">
   <link rel="stylesheet" href="css/editor-scudi.css?v=1">
 
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
   <!-- Menu -->
   <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
@@ -341,3 +353,11 @@
       </footer>
     </section>
   </main>
+
+  <footer class="text-center">
+    <div class="fb-share-button" data-layout="button" data-size="large" data-mobile-iframe="true">
+      <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">
+        Condividi
+      </a>
+    </div>
+  </footer>
