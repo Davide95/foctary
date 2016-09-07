@@ -201,21 +201,6 @@ $(function() {
     updateBackgroundImg();
   });
 
-  $('#background-rotate').click(function() {
-    var hiddenCanvas = document.createElement("canvas");
-    hiddenCanvas.height = background.lastImg.height;
-    hiddenCanvas.width = background.lastImg.canvas.width;
-    var ctx = hiddenCanvas.getContext('2d');
-
-    ctx.drawImage(background.lastImg);
-  });
-
-  // Cambio il testo
-  $('#text-content').keyup(function() {
-    text.text = $(this).val();
-    stage.update();
-  });
-
   // Cambio il colore del testo
   $('.text-color').click(function() {
     text.color = $(this).css('background-color');
