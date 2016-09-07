@@ -129,13 +129,19 @@ $(function() {
       fileReader.readAsDataURL(file);
       $(":input").prop("disabled", true);
       fileReader.onload = function() {
-        background.lastImg.src = fileReader.result;
-        background.lastImg.onload = function() {
-          resetBackgroundPos();
-          updateBackgroundImg();
-          $(":input").prop("disabled", false);
+        var tempImg = new Image();
+        tempImg.src = fileReader.result;
+        tempImg.onload = function() {
+          background.lastImg.src = tempImg.src;
+          background.lastImg.onload = function() {
+            background.lastImg.height = tempImg.height;
+            background.lastImg.width = tempImg.width;
+            resetBackgroundPos();
+            updateBackgroundImg();
+            $(":input").prop("disabled", false);
+          };
         };
-        background.lastImg.onerror = function () {
+        tempImg.onerror = function () {
           $(":input").prop("disabled", false);
           console.log('WARNING: immagine di sfondo non caricata correttamente');
         };
@@ -193,6 +199,15 @@ $(function() {
     background.y += background.lastImg.height * ZOOM_MOVE_SIZE / 2;
 
     updateBackgroundImg();
+  });
+
+  $('#background-rotate').click(function() {
+    var hiddenCanvas = document.createElement("canvas");
+    hiddenCanvas.height = background.lastImg.height;
+    hiddenCanvas.width = background.lastImg.canvas.width;
+    var ctx = hiddenCanvas.getContext('2d');
+
+    ctx.drawImage(background.lastImg);
   });
 
   // Cambio il testo
@@ -311,7 +326,7 @@ $(function() {
       background.lastImg.width = PIECE_SIZE;
       background.lastImg.height = scaleRatio * background.lastImg.height;
     } else {
-      var scaleRatio = PIECE_SIZE / background.lastImg.heigth;
+      var scaleRatio = PIECE_SIZE / background.lastImg.height;
       background.lastImg.height = PIECE_SIZE;
       background.lastImg.width = scaleRatio * background.lastImg.width;
     }
