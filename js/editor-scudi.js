@@ -201,6 +201,25 @@ $(function() {
     updateBackgroundImg();
   });
 
+  $('#background-rotate').click(function() {
+    var hiddenCanvas = $('#demoshield')[0];
+    hiddenCanvas.width = background.lastImg.naturalHeight;
+    hiddenCanvas.height = background.lastImg.naturalWidth;
+    var ctx = hiddenCanvas.getContext('2d');
+    ctx.translate(hiddenCanvas.width / 2, hiddenCanvas.height / 2);
+    ctx.rotate(Math.PI/2);
+    ctx.drawImage(background.lastImg, - hiddenCanvas.height / 2, - hiddenCanvas.width / 2);
+
+    var img = new Image();
+    img.src = hiddenCanvas.toDataURL();
+    img.width = background.lastImg.height;
+    img.height = background.lastImg.width;
+    img.onload = function(){
+      background.lastImg = img;
+      updateBackgroundImg();
+    };
+  });
+
   // Cambio il colore del testo
   $('.text-color').click(function() {
     text.color = $(this).css('background-color');
