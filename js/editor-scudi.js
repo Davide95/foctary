@@ -206,9 +206,12 @@ $(function() {
     hiddenCanvas.width = background.lastImg.naturalHeight;
     hiddenCanvas.height = background.lastImg.naturalWidth;
     var ctx = hiddenCanvas.getContext('2d');
-    ctx.translate(hiddenCanvas.width / 2, hiddenCanvas.height / 2);
+
+    var halfWidth = hiddenCanvas.width / 2;
+    var halfHeight = hiddenCanvas.height / 2;
+    ctx.translate(halfWidth, halfHeight);
     ctx.rotate(Math.PI/2);
-    ctx.drawImage(background.lastImg, - hiddenCanvas.height / 2, - hiddenCanvas.width / 2);
+    ctx.drawImage(background.lastImg, -halfHeight, -halfWidth);
 
     var img = new Image();
     img.src = hiddenCanvas.toDataURL();
