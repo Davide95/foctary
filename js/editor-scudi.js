@@ -202,7 +202,7 @@ $(function() {
   });
 
   $('#background-rotate').click(function() {
-    var hiddenCanvas = $('#demoshield')[0];
+    var hiddenCanvas = document.createElement("canvas");
     hiddenCanvas.width = background.lastImg.naturalHeight;
     hiddenCanvas.height = background.lastImg.naturalWidth;
     var ctx = hiddenCanvas.getContext('2d');
@@ -216,6 +216,8 @@ $(function() {
     img.height = background.lastImg.width;
     img.onload = function(){
       background.lastImg = img;
+      background.x += (background.lastImg.height - background.lastImg.width) / 2;
+      background.y -= (background.lastImg.height - background.lastImg.width) / 2;
       updateBackgroundImg();
     };
   });
