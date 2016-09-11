@@ -130,18 +130,15 @@ $(function() {
       $(":input").prop("disabled", true);
       fileReader.onload = function() {
         var tempImg = new Image();
-        tempImg.src = fileReader.result;
-        tempImg.onload = function() {
-          background.lastImg.src = tempImg.src;
-          background.lastImg.onload = function() {
-            background.lastImg.height = tempImg.height;
-            background.lastImg.width = tempImg.width;
-            resetBackgroundPos();
-            updateBackgroundImg();
-            $(":input").prop("disabled", false);
-          };
+        background.lastImg.src = fileReader.result;
+        background.lastImg.onload = function() {
+          background.lastImg.height = background.lastImg.naturalHeight;
+          background.lastImg.width = background.lastImg.naturalWidth;
+          resetBackgroundPos();
+          updateBackgroundImg();
+          $(":input").prop("disabled", false);
         };
-        tempImg.onerror = function () {
+        background.lastImg.onerror = function () {
           $(":input").prop("disabled", false);
           console.log('WARNING: immagine di sfondo non caricata correttamente');
         };
