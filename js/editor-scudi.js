@@ -222,6 +222,12 @@ $(function() {
     };
   });
 
+  // Cambio il testo
+  $('#text-content').keyup(function() {
+    text.text = $(this).val();
+    stage.update();
+  });
+
   // Cambio il colore del testo
   $('.text-color').click(function() {
     text.color = $(this).css('background-color');
