@@ -216,8 +216,8 @@ $(function() {
     img.height = background.lastImg.width;
     img.onload = function(){
       background.lastImg = img;
-      background.x += (background.lastImg.height - background.lastImg.width) / 2;
-      background.y -= (background.lastImg.height - background.lastImg.width) / 2;
+      background.x += (background.lastImg.height - background.lastImg.width) * background.zoom / 2;
+      background.y -= (background.lastImg.height - background.lastImg.width) * background.zoom / 2;
       updateBackgroundImg();
     };
   });
