@@ -288,6 +288,8 @@ $(function() {
   });
 
   $('#download').click(function() {
+    var drawingFileName = "pedina-" + Math.round((new Date()).getTime() / 1000) + ".png";
+
     var canvas = $('#shield')[0];
     var hiddenCanvas = document.createElement("canvas");
     hiddenCanvas.height = canvas.height;
@@ -300,7 +302,13 @@ $(function() {
     ctx.drawImage(canvas, -hiddenCanvas.width/2, -hiddenCanvas.width/2);
     ctx.translate(-hiddenCanvas.width/2, -hiddenCanvas.width/2);
 
-    $(this).attr('href', hiddenCanvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream'));
+    // IE 10+ fix
+    if (window.Blob && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveBlob(hiddenCanvas.msToBlob(), 'pedina.png');
+    }
+    else {
+      $(this).attr('href', hiddenCanvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream'));
+    }
   });
 
   // Cambio l'immagine di sfondo
