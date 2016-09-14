@@ -303,13 +303,7 @@ $(function() {
     ctx.drawImage(canvas, -hiddenCanvas.width/2, -hiddenCanvas.width/2);
     ctx.translate(-hiddenCanvas.width/2, -hiddenCanvas.width/2);
 
-    // IE 10+ fix
-    if (window.Blob && window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveBlob(hiddenCanvas.msToBlob(), alert($(this).attr('download')));
-    }
-    else {
-      $(this).attr('href', hiddenCanvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream'));
-    }
+    downloadCanvas(hiddenCanvas, $(this)[0]);
   });
 
   // Cambio l'immagine di sfondo
