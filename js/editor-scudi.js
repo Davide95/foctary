@@ -199,6 +199,8 @@ $(function() {
   });
 
   $('#background-rotate').click(function() {
+    $(":input").prop("disabled", true);
+
     var hiddenCanvas = document.createElement("canvas");
     hiddenCanvas.width = background.lastImg.naturalHeight;
     hiddenCanvas.height = background.lastImg.naturalWidth;
@@ -219,6 +221,7 @@ $(function() {
       background.x += (background.lastImg.height - background.lastImg.width) * background.zoom / 2;
       background.y -= (background.lastImg.height - background.lastImg.width) * background.zoom / 2;
       updateBackgroundImg();
+      $(":input").prop("disabled", false);
     };
   });
 
