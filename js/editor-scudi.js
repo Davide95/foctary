@@ -288,8 +288,6 @@ $(function() {
   });
 
   $('#download').click(function() {
-    var drawingFileName = "pedina-" + Math.round((new Date()).getTime() / 1000) + ".png";
-
     var canvas = $('#shield')[0];
     var hiddenCanvas = document.createElement("canvas");
     hiddenCanvas.height = canvas.height;
@@ -304,7 +302,7 @@ $(function() {
 
     // IE 10+ fix
     if (window.Blob && window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveBlob(hiddenCanvas.msToBlob(), 'pedina.png');
+      window.navigator.msSaveBlob(hiddenCanvas.msToBlob(), alert($(this).attr('download')));
     }
     else {
       $(this).attr('href', hiddenCanvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream'));
