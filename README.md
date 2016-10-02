@@ -1,5 +1,5 @@
 # Demo
-Visitare https://davide95.github.io/Editor-Octagone/ per una demo dell'applicazione.
+Visitare https://davide95.github.io/foctary/ per una demo dell'applicazione.
 
 # In produzione
 Comprimere Javascript, CSS e HTML prima di usare questo progetto in produzione.
